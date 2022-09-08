@@ -19,18 +19,25 @@ public class App
 {
     public static void main( String[] args )
     {
-    	try {
-    		InputStream docFile = new FileInputStream(new File("/home/parallels/Documents/docs/config.docx"));
-    		XWPFDocument doc = new XWPFDocument(docFile);
-    		PdfOptions pdfOptions = PdfOptions.create();
-    		OutputStream out = new FileOutputStream(new File("/home/parallels/Documents/docs/configout.pdf"));
-    		PdfConverter.getInstance().convert(doc, out, pdfOptions);
-    		doc.close();
-    		out.close();
-    		System.out.println("Done");
+    	if (args.length == 2) {
+    		try {
+        		// InputStream docFile = new FileInputStream(new File("C:\\tmp\\PrimitivoRomanCV.docx"));
+    			InputStream docFile = new FileInputStream(new File(args[0]));
+        		XWPFDocument doc = new XWPFDocument(docFile);
+        		PdfOptions pdfOptions = PdfOptions.create();
+        		// OutputStream out = new FileOutputStream(new File("C:\\tmp\\PrimitivoRomanCV.pdf"));
+        		OutputStream out = new FileOutputStream(new File(args[1]));
+        		PdfConverter.getInstance().convert(doc, out, pdfOptions);
+        		doc.close();
+        		out.close();
+        		System.out.println("Done");
+        	}
+        	catch(Exception e) {
+        		e.printStackTrace();
+        	}    		
+    	} else {
+    		System.out.println("Numero invalido de argumentos");
     	}
-    	catch(Exception e) {
-    		e.printStackTrace();
-    	}
+    	
     }
 }

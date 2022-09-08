@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: parallels
-Build-Jdk: 11.0.1
+Built-By: ciber
+Build-Jdk: 1.8.0_341
 Created-By: Maven Integration for Eclipse
 
